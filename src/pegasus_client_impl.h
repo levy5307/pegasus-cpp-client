@@ -20,8 +20,8 @@
 #pragma once
 
 #include "../include/pegasus_client.h"
-#include "time_utils.h"
-#include <rrdb/rrdb.client.h>
+#include "base/time_utils.h"
+#include "rrdb/rrdb.client.h"
 #include <dsn/tool-api/zlocks.h>
 
 #include <string>

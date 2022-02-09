@@ -20,6 +20,7 @@
 #pragma once
 
 #include <time.h>
+#include <cstdint>
 
 namespace pegasus {
 namespace utils {
