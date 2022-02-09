@@ -29,7 +29,7 @@
 #include <rrdb/rrdb.code.definition.h>
 #include <pegasus/error.h>
 #include "pegasus_client_impl.h"
-#include "base/constants.h"
+#include "constants.h"
 
 using namespace ::dsn;
 

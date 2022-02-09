@@ -19,8 +19,8 @@
 
 #pragma once
 
-#include "include/pegasus_client.h"
-#include "include/pegasus_error.h"
+#include "../include/pegasus_client.h"
+#include "../include/pegasus_error.h"
 #include "pegasus_client_impl.h"
 
 #include <unordered_map>

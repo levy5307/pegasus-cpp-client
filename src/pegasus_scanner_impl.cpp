@@ -18,7 +18,7 @@
  */
 
 #include "pegasus_client_impl.h"
-#include "base/constants.h"
+#include "constants.h"
 
 using namespace dsn;
 using namespace pegasus;
