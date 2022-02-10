@@ -43,11 +43,30 @@ namespace client {
 std::unordered_map<int, std::string> pegasus_client_impl::_client_error_to_string;
 std::unordered_map<int, int> pegasus_client_impl::_server_error_to_client;
 
+void load_meta_servers(/*out*/ std::vector<dsn::rpc_address> &servers,
+                  const char *section,
+                  const char *key)
+{
+    servers.clear();
+    std::string server_list = dsn_config_get_value_string(section, key, "", "");
+    std::vector<std::string> lv;
+    ::dsn::utils::split_args(server_list.c_str(), lv, ',');
+    for (auto &s : lv) {
+        ::dsn::rpc_address addr;
+        if (!addr.from_string_ipv4(s.c_str())) {
+            dassert(
+                    false, "invalid address '%s' specified in config [%s].%s", s.c_str(), section, key);
+        }
+        servers.push_back(addr);
+    }
+    dassert(servers.size() > 0, "no meta server specified in config [%s].%s", section, key);
+}
+
 pegasus_client_impl::pegasus_client_impl(const char *cluster_name, const char *app_name)
     : _cluster_name(cluster_name), _app_name(app_name)
 {
     std::vector<dsn::rpc_address> meta_servers;
-    dsn::replication::replica_helper::load_meta_servers(
+    load_meta_servers(
         meta_servers, PEGASUS_CLUSTER_SECTION_NAME.c_str(), cluster_name);
     dassert(meta_servers.size() > 0, "");
     _meta_server.assign_group("meta-servers");
