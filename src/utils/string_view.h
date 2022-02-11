@@ -40,11 +40,12 @@
 
 #pragma once
 
+#include "blob.h"
+#include "ports.h"
+
 #include <cstring>
 #include <algorithm>
 #include <cassert>
-#include <dsn/utility/blob.h>
-#include <dsn/utility/ports.h>
 
 namespace dsn {
 

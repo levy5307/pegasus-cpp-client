@@ -29,7 +29,7 @@
 
 #include <arpa/inet.h>
 #include <thrift/protocol/TProtocol.h>
-#include <dsn/utility/string_conv.h>
+#include "string_conv.h"
 
 typedef enum dsn_host_type_t {
     HOST_TYPE_INVALID = 0,
